@@ -23,7 +23,7 @@
     let time = hh + ":" + mm + ":" + ss + " " + session;
 
     document.getElementById("clock").innerText = time; 
-    changeVideoURL(hh);
+    changeVideoURL();
   }
 
   // Define an array of video URLs to cycle through for each hour
@@ -52,15 +52,17 @@
     'https://www.youtube.com/watch?v=Au8cSsWgYUY',  //9 PM
     'https://www.youtube.com/watch?v=nB1xsg-X3-0',  //10 PM
     'https://www.youtube.com/watch?v=Ar8sNQNvi90'  //11 PM
+
   ];
 
   // Keep track of the current index
   let currentIndex = 0;
 
   // Function to change the video URL based on the current hour
-  function changeVideoURL(hh) {
+  function changeVideoURL() {
     const videoIframe = document.querySelector('.video iframe');
-    videoIframe.src = videoURLs[hh % videoURLs.length];
+    videoIframe.src = videoURLs[currentIndex % videoURLs.length];
+    currentIndex++;
   }
 
   // Get the div element where the video player will be inserted
@@ -83,9 +85,8 @@
   // Add an event listener to the video iframe that changes the video every hour
   videoIframe.addEventListener('load', () => {
     setInterval(() => {
-      currentIndex++;
-      currentTime();
-    }, 60 * 60 * 1000);
+      changeVideoURL();
+    }, 60 * 60 * 1000);    
   }); 
 
   // Call the currentTime function to update the clock initially
@@ -106,3 +107,5 @@
 //   // Update the current index
 //   currentIndex = (currentIndex + 1) % videoURLs.length;
 // }
+
+
