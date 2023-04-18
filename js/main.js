@@ -93,3 +93,21 @@ if (currentHour === 0) {
 } else if (currentHour === 23) {
   changeVideoURL();
 }
+
+
+// Get the div element where the video player will be inserted
+const videoPlayerDiv = document.getElementById('video-player');
+
+// Create the video iframe element
+const videoIframe = document.createElement('iframe');
+videoIframe.width = '660';
+videoIframe.height = '415';
+videoIframe.frameBorder = '0';
+videoIframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+videoIframe.allowFullscreen = true;
+
+// Set the initial video URL
+videoIframe.src = 'https://www.youtube.com/embed/zcIDJd-ncHI';
+
+// Insert the video iframe element into the div element
+videoPlayerDiv.appendChild(videoIframe);
