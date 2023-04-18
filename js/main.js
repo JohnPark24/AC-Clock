@@ -54,8 +54,6 @@
     {hour: 23, url:'https://www.youtube.com/watch?v=Ar8sNQNvi90'}  //11 PM
   ];
 
-  // Keep track of the current index
-  // let currentIndex = 0;
 
   // Function to change the video URL based on the current hour
   function changeVideoURL() {
@@ -66,29 +64,24 @@
     if (videoURL) {
       videoIframe.src = videoURL;
     }
-    // videoIframe.src = videoURLs[currentIndex % videoURLs.length];
-    // currentIndex++;
   }
 
   // Get the div element where the video player will be inserted
   const videoPlayerDiv = document.getElementById('video-player');
 
   // Create the video iframe element
-  const videoIframe = document.createElement('iframe');
-  videoIframe.width = '660';
-  videoIframe.height = '415';
-  videoIframe.frameBorder = '0';
-  videoIframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
-  videoIframe.allowFullscreen = true;
-
-  // Set the initial video URL
-  videoIframe.src = ;
+  const newVideoIframe = document.createElement('iframe');
+  newVideoIframe.width = '660';
+  newVideoIframe.height = '415';
+  newVideoIframe.frameBorder = '0';
+  newVideoIframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+  newVideoIframe.allowFullscreen = true;
 
   // Insert the video iframe element into the div element
-  videoPlayerDiv.appendChild(videoIframe);
+  videoPlayerDiv.appendChild(newVideoIframe);
 
   // Add an event listener to the video iframe that changes the video every hour
-  videoIframe.addEventListener('load', () => {
+  newVideoIframe.addEventListener('load', () => {
     setInterval(() => {
       changeVideoURL();
     }, 60 * 60 * 1000);    
