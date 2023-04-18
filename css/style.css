@@ -65,6 +65,11 @@ body{
   justify-content: center;
   align-items: center;
 }
+#video-player{
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 /******************************************
 /* SECTION 3
