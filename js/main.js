@@ -1,31 +1,4 @@
-// import { currentTime } from './clock.js';
-
 (function() {
-  function currentTime() {
-    let date = new Date(); 
-    let hh = date.getHours();
-    let mm = date.getMinutes();
-    let ss = date.getSeconds();
-    let session = "AM";
-
-    if(hh == 0){
-      hh = 12;
-    }
-    if(hh > 12){
-      hh = hh - 12;
-      session = "PM";
-    }
-
-    hh = (hh < 10) ? "0" + hh : hh;
-    mm = (mm < 10) ? "0" + mm : mm;
-    ss = (ss < 10) ? "0" + ss : ss;
-
-    let time = hh + ":" + mm + ":" + ss + " " + session;
-
-    document.getElementById("clock").innerText = time; 
-    changeVideoURL();
-  }
-
   // Define an array of video URLs to cycle through for each hour
   const videoURLs = [
     {hour: 0, url:'https://www.youtube.com/watch?v=9j9YEuFeDAw'}, //12 AM GameCube  
@@ -76,6 +49,7 @@
   newVideoIframe.frameBorder = '0';
   newVideoIframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
   newVideoIframe.allowFullscreen = true;
+  changeVideoURL();
 
   // Insert the video iframe element into the div element
   videoPlayerDiv.appendChild(newVideoIframe);
@@ -86,28 +60,4 @@
       changeVideoURL();
     }, 60 * 60 * 1000);    
   }); 
-
-  // Call the currentTime function to update the clock initially
-  currentTime();
 })();
-
-
-
-// Function to change the video URL
-// function changeVideoURL(currentHour) {
-//   // Get the video iframe element
-//   const videoIframe = document.querySelector('.video iframe');
-
-//   // Set the new video URL
-//   videoIframe.src = videoURLs[currentIndex];
-
-//   // Update the current index
-//   currentIndex = (currentIndex + 1) % videoURLs.length;
-// }
-
-
-// function changeVideoURL() {
-//   const videoIframe = document.querySelector('.video iframe');
-//   videoIframe.src = videoURLs[currentIndex % videoURLs.length];
-//   currentIndex++;
-// }
